@@ -1,0 +1,76 @@
+# Check Docker version
+docker version
+
+# Log in to Docker Hub
+docker login
+
+# To Logout from Docker Hub
+docker logout
+
+# Run the default Nginx Docker Image
+docker run --name <CONTAINER-NAME> -p <HOST_PORT>:<CONTAINER_PORT> -d <IMAGE_NAME>:<TAG>
+
+# Example:
+docker run --name mynginx -p 8090:80 -d nginx
+
+# List running Docker containers
+docker ps
+
+# Access the application in your browser
+http://localhost:8090
+
+# Stop and remove the Docker container
+docker stop mynginx
+docker rm mynginx
+
+# Or force remove the container
+docker rm -f mynginx
+
+# Change to the directory containing your Dockerfile
+# Build the Docker image
+docker build -t <IMAGE_NAME>:<TAG> .
+
+# Example:
+docker build -t mynginx:v1 .
+
+# List Docker images
+docker images
+
+# Run the Docker container and verify
+docker run --name <CONTAINER-NAME> -p <HOST_PORT>:<CONTAINER_PORT> -d <IMAGE_NAME>:<TAG>
+
+# Example:
+docker run --name mynginx -p 8090:80 -d mynginx:v1
+
+# Access the application in your browser
+http://localhost:8090
+
+# List Docker images
+docker images
+
+# Tag the Docker image
+docker tag mynginx:v1 YOUR_DOCKER_USERNAME/mynginx:v1
+
+# Example with 'gowthamnandagopal98':
+docker tag mynginx:v1 gowthamnandagopal98/mynginx:v1
+
+# Push the Docker image to Docker Hub
+docker push YOUR_DOCKER_USERNAME/mynginx:v1
+
+# Example with 'gowthamnandagopal98':
+docker push gowthamnandagopal98/mynginx:v1
+
+# IMPORTANT NOTE:
+# Replace YOUR_DOCKER_USERNAME with your actual Docker Hub username.
+
+# Search for 'nginx' images
+docker search nginx
+
+# Limit the search results to 5
+docker search nginx --limit 5
+
+# Filter search results by stars (e.g., images with at least 50 stars)
+docker search --filter=stars=50 nginx
+
+# Filter for official images only
+docker search --filter=is-official=true nginx
