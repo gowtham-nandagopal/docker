@@ -1,0 +1,11 @@
+# Navigate to the App-Files directory
+cd App-Files
+
+# Create a tar.gz archive of the files
+tar -czvf static_files.tar.gz index.html file1.html file2.html file3.html file4.html file5.html
+
+# Copy the tar.gz file to the Dockerfiles directory
+cp static_files.tar.gz ../Dockerfiles
+
+# Review the copy-file.html in Dockerfiles
+cat ../Dockerfiles/copy-file.html

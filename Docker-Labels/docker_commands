@@ -1,0 +1,53 @@
+# Inspect the Docker image
+docker image inspect [IMAGE-NAME]:[IMAGE-TAG]
+
+# Example:
+docker image inspect demo4-dockerfile-labels:v1
+
+# Get the creation date of the Docker image
+docker inspect --format='{{.Created}}' [IMAGE-NAME]:[IMAGE-TAG]
+
+# Example:
+docker inspect --format='{{.Created}}' demo4-dockerfile-labels:v1
+
+# Get the Docker image labels (unformatted)
+docker inspect --format='{{json .Config.Labels}}' [IMAGE-NAME]:[IMAGE-TAG]
+
+# Example:
+docker image inspect --format='{{json .Config.Labels}}' demo4-dockerfile-labels:v1
+
+# Get the Docker image labels (formatted with jq)
+docker image inspect --format='{{json .Config.Labels}}' [IMAGE-NAME]:[IMAGE-TAG] | jq
+
+# Example:
+docker image inspect --format='{{json .Config.Labels}}' demo4-dockerfile-labels:v1 | jq
+
+# Inspect the Docker container
+docker inspect [CONTAINER-NAME or CONTAINER-ID]
+
+# Example:
+docker inspect mylabels-demo
+
+# Get the IP address of the container
+docker inspect --format='{{.NetworkSettings.IPAddress}}' [CONTAINER-NAME or CONTAINER-ID]
+
+# Example:
+docker inspect --format='{{.NetworkSettings.IPAddress}}' mylabels-demo
+
+# Inspect container state (running, paused, stopped)
+docker inspect --format='{{.State.Status}}' [CONTAINER-NAME or CONTAINER-ID]
+
+# Example:
+docker inspect --format='{{.State.Status}}' mylabels-demo
+
+# Inspect exposed ports
+docker inspect --format='{{json .Config.ExposedPorts}}' [CONTAINER-NAME or CONTAINER-ID]
+
+# Example:
+docker inspect --format='{{json .Config.ExposedPorts}}' mylabels-demo
+
+# Inspect network details of the container (formatted with jq)
+docker inspect --format='{{json .NetworkSettings}}' [CONTAINER-NAME or CONTAINER-ID] | jq
+
+# Example:
+docker inspect --format='{{json .NetworkSettings}}' mylabels-demo | jq
